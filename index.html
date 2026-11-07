@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aplicación sencilla para registrar y controlar gastos personales.">
+  <title>Control de gastos personales</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="contenedor">
+    <header class="encabezado">
+      <h1> ORGANIZA TU DINERO</h1>
+      <h1>Control de gastos personales</h1>
+      <p class="subtitulo">Registra tus gastos y mantén tus cuentas al día.</p>
+    </header>
+
+    <section class="panel" aria-labelledby="titulo-formulario">
+      <h2 id="titulo-formulario">Registrar un gasto</h2>
+      <form id="formularioGasto" novalidate>
+        <div class="campo">
+          <label for="descripcion">Descripción del gasto</label>
+          <input type="text" id="descripcion" name="descripcion" placeholder="Ej. Almuerzo" autocomplete="off">
+          <small class="mensaje-error" id="errorDescripcion"></small>
+        </div>
+
+        <div class="campo">
+          <label for="valor">Valor (COP)</label>
+          <input type="number" id="valor" name="valor" placeholder="Ej. 15000" min="1" step="1">
+          <small class="mensaje-error" id="errorValor"></small>
+        </div>
+
+        <div class="campo">
+          <label for="categoria">Categoría</label>
+          <select id="categoria" name="categoria">
+            <option value="">Selecciona una categoría</option>
+            <option value="Comida">Comida</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Estudio">Estudio</option>
+            <option value="Otros">Otros</option>
+          </select>
+          <small class="mensaje-error" id="errorCategoria"></small>
+        </div>
+
+        <button class="boton boton-principal" type="submit">Agregar gasto</button>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="titulo-listado">
+      <div class="encabezado-listado">
+        <div>
+          <h2 id="titulo-listado">Mis gastos</h2>
+          <p class="texto-suave">Consulta, filtra o elimina tus registros.</p>
+        </div>
+        <div class="campo campo-filtro">
+          <label for="filtroCategoria">Filtrar por categoría</label>
+          <select id="filtroCategoria">
+            <option value="Todos">Todos los gastos</option>
+            <option value="Comida">Comida</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Estudio">Estudio</option>
+            <option value="Otros">Otros</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tabla-contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Categoría</th>
+              <th>Valor</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="tablaGastos">
+            <tr>
+              <td class="vacio" colspan="4">Todavía no has registrado gastos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="total" id="totalGastos" aria-live="polite">Total gastado: $0</p>
+      <p class="nota-presupuesto">Presupuesto mensual: $500.000</p>
+    </section>
+
+    <footer>
+      <p>Control de gastos personales de Andy</p>
+    </footer>
+  </main>
+</body>
+</html>
